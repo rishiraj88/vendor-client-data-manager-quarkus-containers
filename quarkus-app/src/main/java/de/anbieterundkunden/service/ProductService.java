@@ -24,8 +24,8 @@ public class ProductService {
         return product;
     }
 
-    public Product getProduct(long id){
-        Product product =  this.productRepository.findById(id);
+    public Product getProduct(long prodId){
+        Product product =  this.productRepository.findById(prodId);
         if(product ==null){
             throw new NotFoundException();
         }
@@ -46,7 +46,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void deleteProduct(long id){
-        this.productRepository.deleteById(id);
+    public void deleteProduct(long prodId){
+        this.productRepository.deleteById(prodId);
     }
 }

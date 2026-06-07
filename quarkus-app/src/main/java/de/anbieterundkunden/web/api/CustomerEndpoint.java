@@ -72,8 +72,8 @@ public class CustomerEndpoint {
     }
     entity.setAddress(customer.getAddress());
     entity.setEmail(customer.getEmail());
-    entity.setFname(customer.getFname());
-    entity.setLname(customer.getLname());
+    entity.setFName(customer.getFName());
+    entity.setLName(customer.getLName());
     entity.setPhone(customer.getPhone());
     this.customerRepository.persist(entity);
   }

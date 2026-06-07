@@ -14,9 +14,9 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name="customer_id")
   private long id;
-  @Column(name="fname")
+  @Column(name="fName")
   private String fName;
-  @Column(name="lname")
+  @Column(name="lName")
   private String lName;
   @Column(name="email")
   private String email;
@@ -33,19 +33,19 @@ public class Customer {
     this.id = id;
   }
 
-  public String getFname() {
+  public String getFName() {
     return fName;
   }
 
-  public void setFname(String fName) {
+  public void setFName(String fName) {
     this.fName = fName;
   }
 
-  public String getLname() {
+  public String getLName() {
     return lName;
   }
 
-  public void setLname(String lName) {
+  public void setLName(String lName) {
     this.lName = lName;
   }
 
@@ -77,8 +77,8 @@ public class Customer {
   public String toString() {
     return "Customer { " +
         "id = " + id +
-        ", first name = '" + fName + '\'' +
-        ", last name = '" + lName + '\'' +
+        ", first Name = '" + fName + '\'' +
+        ", last Name = '" + lName + '\'' +
         ", email = '" + email + '\'' +
         ", phone = '" + phone + '\'' +
         ", address = '" + address + '\'' +
