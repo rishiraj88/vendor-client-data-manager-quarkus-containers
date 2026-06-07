@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="services")
+@Table(name="products")
 public class Product {
 
   @Id
@@ -47,10 +47,10 @@ public class Product {
 
   @Override
   public String toString() {
-    return "Service{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", price=" + price +
-        '}';
+    return "Product { " +
+        "id = " + id +
+        ", name = '" + name + '\'' +
+        ", price = " + price +
+        " }";
   }
 }
