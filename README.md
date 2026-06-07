@@ -6,6 +6,13 @@ Quarkus offers container-first support to the applications built for JVM (Java V
 ## the Need for Container-first Approach
 In modern era, microservices and the applications connected over network are quite common and usually a go-to approach for system design. Hence it is utmost important for our toolset to be well acquainted with the features and abilities to develop distributed systems with microservices and APIs. And, containers make a perfect pitch for this goal.
 
+## built with:
+- Quarkus: container-first GraalVM for Java,
+- GraalVM: graalvm-jdk,
+- PostgreSQL: RDBMS,
+- Panache ORM, and
+- Docker.
+
 ## Mark your feedback at the Following Contact Points
 - **LinkedIn:** <https://www.linkedin.com/in/rishirajopenminds>
 - **GitHub:** <https://github.com/rishiraj88>
