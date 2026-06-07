@@ -10,7 +10,8 @@ In modern era, microservices and the applications connected over network are qui
 - Quarkus: container-first GraalVM for Java,
 - GraalVM: graalvm-jdk,
 - PostgreSQL: RDBMS,
-- Panache ORM, and
+- Panache ORM,
+- GraphQL, and
 - Docker.
 
 ## Mark your feedback at the Following Contact Points
