@@ -4,9 +4,13 @@ import de.anbieterundkunden.data.entity.Product;
 import de.anbieterundkunden.data.repository.ProductRepository;
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
-
 import javax.transaction.Transactional;
-import javax.ws.rs.*;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.WebApplicationException;
 import java.util.List;
 
 @Path("/rest/products")
@@ -30,8 +34,8 @@ public class ProductEndpoint {
     }
 
     @GET
-    @Path("/{prodid}")
-    public Product getProduct(@RestPath("prodid")long id){
+    @Path("/{prodId}")
+    public Product getProduct(@RestPath("prodId")long id){
         Product product = this.productRepository.findById(id);
         if(product ==null){
             throw new WebApplicationException(404);
@@ -41,9 +45,9 @@ public class ProductEndpoint {
 
     @Transactional
     @PUT
-    @Path("/{prodid}")
+    @Path("/{prodId}")
     @ResponseStatus(204)
-    public void updateProduct(@RestPath("prodid")long id, Product product){
+    public void updateProduct(@RestPath("prodId")long id, Product product){
         if (id != product.getId()){
             throw new WebApplicationException(400);
         }
@@ -52,9 +56,9 @@ public class ProductEndpoint {
 
     @Transactional
     @DELETE
-    @Path("/{prodid}")
+    @Path("/{prodId}")
     @ResponseStatus(205)
-    public void deleteProduct(@RestPath("prodid")long id){
+    public void deleteProduct(@RestPath("prodId")long id){
         this.productRepository.deleteById(id);
     }
 }

@@ -6,7 +6,6 @@ import io.netty.util.internal.StringUtil;
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
 import org.jboss.resteasy.reactive.RestQuery;
-
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
@@ -49,8 +48,8 @@ public class CustomerEndpoint {
   }
 
   @GET
-  @Path("/{custid}")
-  public Customer getCustomer(@RestPath("custid")long id){
+  @Path("/{custId}")
+  public Customer getCustomer(@RestPath("custId")long id){
     Customer customer = this.customerRepository.findById(id);
     if (customer == null){
       throw new NotFoundException();
@@ -60,9 +59,9 @@ public class CustomerEndpoint {
 
   @Transactional
   @PUT
-  @Path("/{custid}")
+  @Path("/{custId}")
   @ResponseStatus(204)
-  public void updateCustomer(@RestPath("custid")long id, Customer customer){
+  public void updateCustomer(@RestPath("custId")long id, Customer customer){
     if(id != customer.getId()){
       throw new BadRequestException();
     }
@@ -80,9 +79,9 @@ public class CustomerEndpoint {
 
   @Transactional
   @DELETE
-  @Path("/{custid}")
+  @Path("/{custId}")
   @ResponseStatus(205)
-  public void deleteCustomer(@RestPath("custid")long id){
+  public void deleteCustomer(@RestPath("custId")long id){
     this.customerRepository.deleteById(id);
   }
 }

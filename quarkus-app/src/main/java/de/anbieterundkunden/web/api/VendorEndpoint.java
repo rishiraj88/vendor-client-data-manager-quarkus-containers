@@ -5,9 +5,14 @@ import de.anbieterundkunden.data.repository.VendorRepository;
 import io.quarkus.runtime.util.StringUtil;
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
-
 import javax.transaction.Transactional;
-import javax.ws.rs.*;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +52,8 @@ public class VendorEndpoint {
     }
 
     @GET
-    @Path("/{vendorid}")
-    public Vendor getVendor(@RestPath("vendorid")long id){
+    @Path("/{vendorId}")
+    public Vendor getVendor(@RestPath("vendorId")long id){
         Vendor vendor = this.vendorRepository.findById(id);
         if (vendor == null){
             throw new WebApplicationException(404);
@@ -57,10 +62,10 @@ public class VendorEndpoint {
     }
 
     @PUT
-    @Path("/{vendorid}")
+    @Path("/{vendorId}")
     @ResponseStatus(204)
     @Transactional
-    public void updateVendor(@RestPath("id")long id, Vendor vendor){
+    public void updateVendor(@RestPath("prodId")long id, Vendor vendor){
         if (id != vendor.getId()){
             throw new WebApplicationException(400);
         }
@@ -68,10 +73,10 @@ public class VendorEndpoint {
     }
 
     @DELETE
-    @Path("/{vendorid}")
+    @Path("/{vendorId}")
     @ResponseStatus(205)
     @Transactional
-    public void deleteVendor(@RestPath("id")long id){
+    public void deleteVendor(@RestPath("prodId")long id){
         this.vendorRepository.deleteById(id);
     }
 }
