@@ -51,7 +51,7 @@ public class VendorResource {
     }
 
     @Query("getVendor")
-    @Description("Gets the details of a vendor, matched by vendor ID")
+    @Description("Gets the details of a vendor, matched by Vendor ID")
     public Vendor getVendor(@Name("id")long id){
         return this.vendorService.getVendor(id);
     }

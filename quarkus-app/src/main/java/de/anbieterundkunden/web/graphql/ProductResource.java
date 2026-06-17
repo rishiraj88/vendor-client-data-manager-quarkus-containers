@@ -21,31 +21,31 @@ public class ProductResource {
   }
 
   @Query("allProducts")
-  @Description("Gets all products available in the system")
+  @Description("Gets the data of all the products")
   public List<Product> getAllProducts(){
     return this.productService.getAllProducts();
   }
 
   @Mutation("addProduct")
-  @Description("Adds a product to the system")
+  @Description("Save the details of a product")
   public Product addProduct(ProductInput product){
     return this.productService.addProduct(product.getEntity());
   }
 
   @Query("getProduct")
-  @Description("Gets an individual product by ID")
+  @Description("Gets the details of a product, matched by Product ID")
   public Product getProduct(@Name("id")long id){
     return this.productService.getProduct(id);
   }
 
   @Mutation("updateProduct")
-  @Description("Updates an individual product")
+  @Description("Updates the details of a product")
   public Product updateProduct(Product product){
     return this.productService.updateProduct(product);
   }
 
   @Mutation("deleteProduct")
-  @Description("Removes an individual product")
+  @Description("Removes a product record")
   public Product deleteProduct(@Name("id")long id){
       Product product = this.productService.getProduct(id);
     this.productService.deleteProduct(id);

@@ -1,6 +1,6 @@
 package de.anbieterundkunden.web.graphql.input;
-import de.anbieterundkunden.data.entity.Product;
 
+import de.anbieterundkunden.data.entity.Product;
 import java.math.BigDecimal;
 
 public class ProductInput {

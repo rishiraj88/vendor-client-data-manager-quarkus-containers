@@ -16,9 +16,9 @@ public class Customer {
   private long id;
   @Column(name="fName")
   private String fName;
-  @Column(name="lName")
+  @Column(name="lName") @NotNull
   private String lName;
-  @Column(name="email")
+  @Column(name="email") @NotNull @Email
   private String email;
   @Column(name="phone")
   private String phone;

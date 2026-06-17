@@ -1,12 +1,14 @@
 package de.anbieterundkunden.service;
 
-import de.anbieterundkunden.data.entity.Customer;
-import de.anbieterundkunden.data.repository.CustomerRepository;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+
+import de.anbieterundkunden.data.entity.Customer;
+import de.anbieterundkunden.data.repository.CustomerRepository;
 
 @ApplicationScoped
 public class CustomerService {
