@@ -1,5 +1,7 @@
 package de.anbieterundkunden;
 
+import java.util.List;
+
 import de.anbieterundkunden.data.entity.Customer;
 import de.anbieterundkunden.data.entity.Product;
 import de.anbieterundkunden.data.entity.Vendor;
@@ -8,9 +10,7 @@ import de.anbieterundkunden.data.repository.ProductRepository;
 import de.anbieterundkunden.data.repository.VendorRepository;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-
-import javax.enterprise.context.control.ActivateRequestContext;
-import java.util.List;
+import jakarta.enterprise.context.control.ActivateRequestContext;
 
 @QuarkusMain
 public class QuarkusApp implements QuarkusApplication {
@@ -35,12 +35,12 @@ public class QuarkusApp implements QuarkusApplication {
         Product product = this.productRepository.findById(5L);
         System.out.println(product);
         System.out.println("**\nVendors**");
-        Vendor vendor = this.vendorRepository.findByName("Wikivu");
+        Vendor vendor = this.vendorRepository.findByName("Wikivu").get(0);
         System.out.println("Vendor by name: " + vendor);
-        vendor = this.vendorRepository.findByEmail("rkingx@baidu.com");
+        vendor = this.vendorRepository.findByEmail("rkingx@baidu.com").get(0);
         System.out.println("Vendor by email: " + vendor);
         System.out.println("**\nCustomers**");
-        Customer customer = this.customerRepository.findByEmail("in.felis@Mauriseu.co.uk");
+        Customer customer = this.customerRepository.findByEmail("in.felis@Mauriseu.co.uk").get(0);
         System.out.println("Customer by email: " + customer);
 
         return 0;

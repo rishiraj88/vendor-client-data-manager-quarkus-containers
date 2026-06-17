@@ -2,19 +2,18 @@ package de.anbieterundkunden.web.api;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.WebApplicationException;
-
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
 
 import de.anbieterundkunden.data.entity.Product;
 import de.anbieterundkunden.service.ProductService;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.WebApplicationException;
 
 @Path("/rest/products")
 public class ProductEndpoint {
@@ -60,7 +59,7 @@ public class ProductEndpoint {
     @Transactional
     @DELETE
     @Path("/{prodId}")
-    @ResponseStatus(205)
+    @ResponseStatus(204)
     public void deleteProduct(@RestPath("prodId")long id){
         this.productService.deleteProduct(id);
     }

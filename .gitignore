@@ -1,3 +1,4 @@
 db/.idea
 quarkus-app/.idea
 quarkus-app/target
+quarkus-app/.vscode

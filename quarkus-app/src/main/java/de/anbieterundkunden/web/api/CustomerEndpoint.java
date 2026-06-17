@@ -3,17 +3,6 @@ package de.anbieterundkunden.web.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
 import org.jboss.resteasy.reactive.RestQuery;
@@ -21,6 +10,16 @@ import org.jboss.resteasy.reactive.RestQuery;
 import de.anbieterundkunden.data.entity.Customer;
 import de.anbieterundkunden.service.CustomerService;
 import io.netty.util.internal.StringUtil;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 
 @Path("/rest/customers")
 @Produces("application/json")
@@ -33,7 +32,7 @@ public class CustomerEndpoint {
 
   @GET
   public List<Customer> getCustomers(@RestQuery("email")String emailAddress){
-    if(StringUtil.isNullOrEmpty(emailAddress)){
+    if(StringUtil.isNullOrEmpty(emailAddress.trim())){
       return this.customerService.getAllCustomers();
     }
     List<Customer> customers = new ArrayList<>();
@@ -85,7 +84,7 @@ public class CustomerEndpoint {
   @Transactional
   @DELETE
   @Path("/{custId}")
-  @ResponseStatus(205)
+  @ResponseStatus(204)
   public void deleteCustomer(@RestPath("custId")long id){
     this.customerService.deleteCustomer(id);
   }
