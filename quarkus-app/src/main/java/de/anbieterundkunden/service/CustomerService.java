@@ -21,9 +21,8 @@ public class CustomerService {
         return this.customerRepository.listAll();
     }
     public List<Customer> getCustomersByEmail(String emailAddress){
-        Customer customer = this.customerRepository.findByEmail(emailAddress);
         List<Customer> customers = new ArrayList<>();
-        customers.add(customer);
+        customers.addAll(this.customerRepository.findByEmail(emailAddress));
         return customers;
     }
 

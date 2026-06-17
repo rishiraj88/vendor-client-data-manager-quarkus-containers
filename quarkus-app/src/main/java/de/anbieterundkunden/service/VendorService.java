@@ -1,12 +1,14 @@
 package de.anbieterundkunden.service;
 
-import de.anbieterundkunden.data.entity.Vendor;
-import de.anbieterundkunden.data.repository.VendorRepository;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+
+import de.anbieterundkunden.data.entity.Vendor;
+import de.anbieterundkunden.data.repository.VendorRepository;
 
 @ApplicationScoped
 public class VendorService {
@@ -20,16 +22,14 @@ public class VendorService {
     }
     
     public List<Vendor> getVendorsByName(String vendorName){
-        Vendor vendor = this.vendorRepository.findByName(vendorName);
         List<Vendor> vendors = new ArrayList<>();
-        vendors.add(vendor);
+        vendors.addAll(this.vendorRepository.findByName(vendorName));
         return vendors;
     }
     
     public List<Vendor> getVendorsByEmail(String emailAddress){
-        Vendor vendor = this.vendorRepository.findByEmail(emailAddress);
         List<Vendor> vendors = new ArrayList<>();
-        vendors.add(vendor);
+        vendors.addAll(this.vendorRepository.findByEmail(emailAddress));
         return vendors;
     }
 
@@ -42,9 +42,8 @@ public class VendorService {
     }
 
     public List<Vendor> getVendorsByEmailAndName(String emailAddress, String vendorName){
-        Vendor vendor = this.vendorRepository.findByEmailAndName(emailAddress, vendorName);
         List<Vendor> vendors = new ArrayList<>();
-        vendors.add(vendor);
+        vendors.addAll(this.vendorRepository.findByEmailAndName(emailAddress, vendorName));
         return vendors;
     }
     
@@ -65,7 +64,7 @@ public class VendorService {
         entity.setEmail(vendor.getEmail());
         entity.setPhone(vendor.getPhone());
         entity.setAddress(vendor.getAddress());
-        this.vendorRepository.persist(vendor);
+        this.vendorRepository.persist(entity);
 
         return entity;
     }

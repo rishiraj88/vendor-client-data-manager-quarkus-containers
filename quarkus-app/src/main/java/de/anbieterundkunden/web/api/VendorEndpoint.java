@@ -3,22 +3,19 @@ package de.anbieterundkunden.web.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
-
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestPath;
 
 import de.anbieterundkunden.data.entity.Vendor;
 import de.anbieterundkunden.service.VendorService;
-import io.quarkus.runtime.util.StringUtil;
-
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.WebApplicationException;
 @Path("/rest/vendors")
 public class VendorEndpoint {
     private final VendorService vendorService;
@@ -28,14 +25,14 @@ public class VendorEndpoint {
 
     @GET
     public List<Vendor> getVendors(@QueryParam("email")String email, @QueryParam("name")String name){
-        if(StringUtil.isNullOrEmpty(email) && StringUtil.isNullOrEmpty(name)){
+        if((email == null || email.isBlank()) && (name == null || name.isBlank())){
             return this.vendorService.getAllVendors();
         }else{
             List<Vendor> vendors = new ArrayList<>();
-            if(!StringUtil.isNullOrEmpty(email) && !StringUtil.isNullOrEmpty(name)){
+            if(!(email == null || email.isBlank()) && !(name == null || name.isBlank())){
                 List<Vendor> vendorsFound = this.vendorService.getVendorsByEmailAndName(email, name);
                 vendors.addAll(vendorsFound);
-            }else if(!StringUtil.isNullOrEmpty(email)){
+            }else if(!(email == null || email.isBlank())){
                 List<Vendor> vendorsFound = this.vendorService.getVendorsByEmail(email);
                 vendors.addAll(vendorsFound);
             }else{
@@ -77,7 +74,7 @@ public class VendorEndpoint {
 
     @DELETE
     @Path("/{vendorId}")
-    @ResponseStatus(205)
+    @ResponseStatus(204)
     @Transactional
     public void deleteVendor(@RestPath("vendorId")long id){
         this.vendorService.deleteVendor(id);
